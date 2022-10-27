@@ -1,0 +1,31 @@
+.foodCard {
+    width: 272px;
+    height: 416px;
+    margin: 10px;
+    font-family: Roboto;
+}
+
+
+.foodCard__image img {
+    width: 272px;
+}
+
+.foodCard__title {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.foodCard__description {
+    font-size: 11px;
+    font-family: "Roboto Light";
+    color: gray;
+}
+.foodCard__footer {
+    display: flex;
+    justify-content: space-between;
+}
+.foodCard__footer__price {
+    font-weight: bold;
+}

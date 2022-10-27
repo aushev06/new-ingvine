@@ -1,0 +1,61 @@
+:root {
+  //COLORS
+  --color--primary-main: #ffdf36;
+  --color--primary-light: #fff3b4;
+  --color--primary-dark: #917c12;
+
+  --color--secondary-main: #47d7ac;
+  --color--secondary-main_rgb: 28, 189, 141;
+
+  --color--success-main: #1bb486;
+  --color--success-light: #eaf8f4;
+
+  --color--error-main: #ff544a;
+  --color--error-light: #fff0ef;
+
+  --color--purple-main: #7169d1;
+  --color--purple-light: #e7e5ff;
+
+  --color--gray-0: #FBF7F0;
+  --color--gray-100: #f6f6f6;
+  --color--gray-150: #fbfbfb;
+  --color--gray-200: #eeeeee;
+  --color--gray-400: #afafaf;
+  --color--gray-600: #878787;
+  --color--gray-700: #737373;
+  --color--gray-900: #373737;
+  --color--black: #373737;
+
+  --color--brow-text: #68572d;
+
+  --color--green-100: #1cbd8d;
+
+  //CARD
+  --card--item--width: 22.9rem;
+  --card--item--img--height: 200px;
+
+  //SPACING
+  --spacing--10: 10px;
+  --spacing--20: 20px;
+  --spacing--30: 30px;
+  --spacing--40: 40px;
+  --spacing--50: 50px;
+
+  //BORDER-RADIUS
+  --border--radius-6: 6px;
+  --border--radius-8: 8px;
+  --border--radius-16: 16px;
+
+  --popover--padding: 20px;
+
+  //ADMIN
+  --admin--navigation--width: 130px;
+
+  --font--family--base: 'Kumbh Sans', -apple-system, BlinkMacSystemFont, Roboto, Segoe UI, Oxygen, Ubuntu, Cantarell,
+    Fira Sans, Droid Sans, Helvetica Neue, Nunito, sans-serif;
+
+  --font--family--base-arabic: 'Almarai', -apple-system, BlinkMacSystemFont, Roboto, Segoe UI, Oxygen, Ubuntu, Cantarell,
+    Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+
+  --base-color: #F85656;
+}

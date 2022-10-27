@@ -1,0 +1,34 @@
+@import '../media';
+
+@mixin card($minWidth: 265px) {
+  position: relative;
+  min-width: $minWidth;
+  box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.04);
+  background: #ffffff;
+  overflow: hidden;
+  border-radius: 16px;
+  color: var(--color--gray-900);
+
+  @include phone-m {
+    min-width: 165px;
+  }
+
+  @include phone-lg {
+    min-width: 213px;
+  }
+
+  @include laptop {
+    min-width: 225px;
+  }
+
+  :global {
+    .description {
+      margin-top: 6px;
+      margin-bottom: 10px;
+      padding: 0 20px;
+      font-size: 14px;
+      line-height: 17px;
+      color: var(--color--gray-700);
+    }
+  }
+}

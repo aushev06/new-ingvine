@@ -1,0 +1,17 @@
+.root {
+  background: var(--base-color) !important;
+  color: #fff !important;
+  border: none !important;
+
+  font-family: 'Nunito' !important;
+  font-style: normal !important;;
+  font-weight: 700 !important;;
+  font-size: 16px !important;;
+  line-height: 22px !important;;
+  /* identical to box height */
+
+  letter-spacing: 0.02em !important;
+  width: 120px;
+  height: 45px;
+  border-radius: 15px !important;
+}

@@ -1,0 +1,80 @@
+.header {
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+
+  &:nth-child(n) {
+    margin-right: 40px;
+  }
+}
+
+.right {
+  display: flex;
+  column-gap: 32px;
+  align-items: center;
+}
+
+
+.phone {
+  font-family: 'Nunito' !important;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 23px;
+
+  color: #101010;
+}
+.phoneText {
+  font-family: 'Nunito' !important;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  /* identical to box height */
+
+
+  color: #8B8B8B;
+}
+
+.logo {
+  display: block;
+  width: 250px;
+  font-size: 0px;
+  line-height: 0;
+  font-style: normal;
+
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
+  font-family: 'Nunito' !important;
+  font-weight: 500;
+  color: rgb(255, 105, 0);
+
+  i {
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+    font-size: 0px;
+    line-height: 0;
+    font-style: normal;
+    width: 100%;
+  }
+}
+
+.location {
+  left: 39px;
+  position: relative;
+  font-family: Nunito !important;
+  display: flex;
+  align-items: center;
+}
+
+.locationText {
+  margin-left: 15px;
+}

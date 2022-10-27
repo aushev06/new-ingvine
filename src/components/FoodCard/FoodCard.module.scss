@@ -1,0 +1,105 @@
+.root {
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Nunito' !important;
+}
+.title {
+    font-family: 'Nunito' !important;
+    font-style: normal !important;
+    font-weight: 800 !important;
+    font-size: 32px !important;
+    line-height: 34px !important;
+
+    color: #000000 !important;
+}
+
+.optionTitle {
+    font-family: 'Nunito' !important;
+    font-style: normal !important;
+    font-weight: 800 !important;
+    font-size: 18px !important;
+    line-height: 25px !important;
+
+    color: #000000 !important;
+}
+
+.optionContainer {
+    margin-top: 30px;
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: end;
+    margin-top: 43px;
+    margin-right: 40px;
+}
+
+.modalDescription {
+    font-family: 'Nunito' !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    font-size: 16px !important;
+    line-height: 23px !important;
+
+    color: #606060;
+}
+
+.foodCard {
+    width: 272px;
+    height: 416px;
+    margin: 10px;
+    font-family: Roboto;
+}
+
+.foodCard__image img {
+    width: 272px;
+}
+
+.foodCard__title {
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 30px;
+}
+
+.foodCard__description {
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+
+    color: #8B8B8B;
+}
+.foodCard__footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+    align-items: center;
+}
+.foodCard__footer__price {
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 26px;
+}
+
+.foodCard__footer_action {
+
+}
