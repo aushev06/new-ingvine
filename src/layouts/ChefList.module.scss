@@ -1,27 +1,47 @@
 @import '../styles/media';
 
-.restaurants {
-
-  @media (min-width: 1200px) {
-    margin-bottom: 40px;
-  }
+.cards {
+  margin-bottom: var(--spacing--30);
 }
 
-.restaurantList {
+.cardsList {
   display: flex;
   flex-wrap: wrap;
-  margin-right: -20px;
-  margin-left: -20px;
+
+  @supports (display: grid) {
+    flex-wrap: wrap;
+    grid-template-columns: repeat(auto-fill, minmax(22rem, var(--card--item--width)));
+    gap: var(--spacing--40);
+  }
+  @include tablets {
+    --card--item--width: 20rem;
+  }
 
   @include phone-m {
-    flex-direction: column;
+
+    div[class*='cardItem__'] {
+      margin-bottom: 40px;
+    }
   }
 }
 
-.restaurantsSkeleton {
-  padding: 0 20px 20px;
-  width: 25%;
-  flex: 0 0 25%;
+.categoryList {
+  @supports (display: grid) {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(12rem, 14.5rem));
+    gap: var(--spacing--40);
+  }
+  @include tablets {
+    --card--item--width: 10rem;
+  }
+
+  @include phone-m {
+    display: block;
+
+    div[class*='cardItem__'] {
+      margin-bottom: 40px;
+    }
+  }
 }
 
 .result {

@@ -3,16 +3,26 @@ import './App.css';
 import {FoodCard} from "./components/FoodCard";
 import {MainLayout} from "./layouts/MainLayout";
 import {Categories} from "./components/Categories";
-
+import {
+    BrowserRouter,
+    Routes,
+    Route,
+} from "react-router-dom";
+import {Home} from "./pages/Home";
+import {useEffect} from "react";
 function App() {
-    return (
-        <MainLayout>
-            <Categories/>
+    useEffect(() => {
+        if (!localStorage.getItem('token')) {
+            localStorage.setItem('token', (new Date().getTime().toString()))
+        }
+    })
 
-            <div>
-                <FoodCard />
-            </div>
-        </MainLayout>
+    return (
+        <div>
+            <Routes>
+                <Route exact path={'/'} element={<Home />} />
+            </Routes>
+        </div>
     );
 }
 

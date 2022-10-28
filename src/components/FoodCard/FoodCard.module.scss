@@ -1,3 +1,5 @@
+@import '../../styles/media';
+
 .root {
     background: #fff;
     display: flex;
@@ -57,13 +59,21 @@
 
 .foodCard {
     width: 272px;
-    height: 416px;
     margin: 10px;
-    font-family: Roboto;
+    @include phone-m {
+        width: 164px !important;
+        margin: unset !important;
+    }
 }
 
 .foodCard__image img {
     width: 272px;
+    height: 272px;
+
+    @include phone-m {
+        width: 140px !important;
+        height: 140px !important;
+    }
 }
 
 .foodCard__title {
@@ -75,6 +85,10 @@
     font-weight: 700;
     font-size: 22px;
     line-height: 30px;
+
+    @include phone-m {
+        font-size: 18px;
+    }
 }
 
 .foodCard__description {
@@ -85,6 +99,10 @@
     line-height: 19px;
 
     color: #8B8B8B;
+
+    @include phone-m {
+        font-size: 12px;
+    }
 }
 .foodCard__footer {
     display: flex;
@@ -98,8 +116,14 @@
     font-weight: 400;
     font-size: 19px;
     line-height: 26px;
+
+    @include phone-m {
+        font-size: 12px;
+    }
 }
 
 .foodCard__footer_action {
-
+    @include phone-m {
+        margin-right: 5px;
+    }
 }

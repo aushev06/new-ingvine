@@ -3,6 +3,7 @@ import {List, ListItem} from "@mui/material";
 import clsx from "clsx";
 
 export const Categories = () => {
+
     return (
         <div className={styles.root}>
             <List className={styles.list}>

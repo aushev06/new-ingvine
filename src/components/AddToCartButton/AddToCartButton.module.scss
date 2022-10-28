@@ -1,3 +1,5 @@
+@import "../../styles/media";
+
 .root {
   background: #F85656 !important;
   color: #fff !important;
@@ -13,4 +15,10 @@
   border-radius: 15px !important;
   width: 145px;
   height: 42px;
+
+  @include phone-m {
+    font-size: 12px !important;
+    width: 30px;
+    height: 30px;
+  }
 }
