@@ -1,11 +1,12 @@
+import React from 'react';
 import './FoodCard.css'
 import {Button} from "../Button";
 import styles from './FoodCard.module.scss'
 import {AddToCartButton} from "../AddToCartButton";
 import {
-    Box,
+    Box, Checkbox, Divider,
     FormControl,
-    FormControlLabel,
+    FormControlLabel, FormGroup,
     FormLabel,
     Modal,
     Radio,
@@ -13,7 +14,13 @@ import {
     Typography,
     useMediaQuery
 } from "@mui/material";
-import {useState} from "react";
+import {useRef, useState} from "react";
+import {useDispatch} from "react-redux";
+import {addToCartAsync} from "../../features/cart/cartSlice";
+import {FoodOptions} from "../FoodOptions";
+import {Icon} from "../Icon";
+
+export const FoodCardContext = React.createContext({});
 
 export const FoodCard = ({food}) => {
     const {
@@ -28,14 +35,21 @@ export const FoodCard = ({food}) => {
         options = [],
 
     } = food;
-
+    const [selectedOptions, setSelectedOptions] = useState([]);
     const isMobile = useMediaQuery('(max-width:768px)');
-
+    const dispatch = useDispatch();
     const [open, setOpen] = useState(false);
     const [selectedFoodPropertyId, setSelectedFoodPropertyId] = useState(properties[0].id);
+    const selectPropertyRef = useRef(properties[0]);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+    const [price, setPrice] = useState(selectPropertyRef.current.price);
 
+
+    const handleSelectFoodPropertyId = (propertyId) => {
+        setSelectedFoodPropertyId(propertyId)
+        selectPropertyRef.current = properties.find((item) => item.id === propertyId);
+    }
 
     const style = {
         position: 'absolute',
@@ -51,11 +65,12 @@ export const FoodCard = ({food}) => {
     };
 
     const handleAddToCart = () => {
+        dispatch(addToCartAsync(selectedFoodPropertyId, selectedOptions));
         alert('Товар добавлен в корзину')
     }
 
     return (
-        <>
+        <FoodCardContext.Provider value={{selectedOptions, setSelectedOptions}}>
             <div className={styles.foodCard}>
                 <div className={styles.foodCard__image}>
                     <img src={img} alt=""/>
@@ -76,7 +91,8 @@ export const FoodCard = ({food}) => {
                     </div>
 
                     <div className={styles.foodCard__footer_action}>
-                        <AddToCartButton onAdd={properties.length > 2 ? handleOpen : handleAddToCart}/>
+                        <AddToCartButton
+                            onAdd={properties.length > 2 || options.length ? handleOpen : handleAddToCart}/>
                     </div>
                 </div>
             </div>
@@ -87,53 +103,61 @@ export const FoodCard = ({food}) => {
                 aria-describedby="modal-modal-description"
             >
                 <Box sx={style}>
+                    <Typography className={styles.title} id="modal-modal-title" variant="h6" component="h2">
+                        {name}
+                    </Typography>
+
                     <div className={styles.container}>
-                        <div>
-                            <Typography className={styles.title} id="modal-modal-title" variant="h6" component="h2">
-                                {name}
-                            </Typography>
-                            <Typography className={styles.modalDescription} id="modal-modal-description" sx={{mt: 2}}>
-                                {description || 'Описание отсутствует'}
-                            </Typography>
-
-                            <div className={styles.optionContainer}>
-                                <FormControl>
-                                    <FormLabel className={styles.optionTitle}
-                                               id="demo-row-radio-buttons-group-label">Порция</FormLabel>
-                                    <RadioGroup
-                                        row
-                                        aria-labelledby="demo-row-radio-buttons-group-label"
-                                        name="row-radio-buttons-group"
-                                    >
-                                        {properties.map(property => {
-                                            return (
-                                                <FormControlLabel
-                                                    onClick={() => setSelectedFoodPropertyId(property.id)}
-                                                    checked={property.id === selectedFoodPropertyId}
-                                                    key={property.id} value={property.id}
-                                                    control={<Radio/>} label={property.name}
-                                                />
-                                            )
-                                        })}
-
-                                    </RadioGroup>
-                                </FormControl>
-                            </div>
-
-                            <div className={styles.buttonContainer}>
-                                <AddToCartButton onAdd={handleAddToCart}/>
-                            </div>
-
-                        </div>
                         <div>
                             <div className={styles.foodCard__image}>
                                 <img src={img} alt=""/>
                             </div>
                         </div>
+
+                        <div className={styles.modalDescriptionContainer}>
+
+                            <Typography className={styles.modalDescription} id="modal-modal-description" sx={{mt: 2}}>
+                                {description || 'Описание отсутствует'}
+                            </Typography>
+                        </div>
                     </div>
+
+                    {properties.length > 1 && (
+                        <div className={styles.optionContainer}>
+                            <FormControl>
+                                <FormLabel className={styles.optionTitle}
+                                           id="demo-row-radio-buttons-group-label">Порция</FormLabel>
+                                <RadioGroup
+                                    row
+                                    aria-labelledby="demo-row-radio-buttons-group-label"
+                                    name="row-radio-buttons-group"
+                                >
+                                    {properties.map(property => {
+                                        return (
+                                            <FormControlLabel
+                                                onClick={() => handleSelectFoodPropertyId(property.id)}
+                                                checked={property.id === selectedFoodPropertyId}
+                                                key={property.id} value={property.id}
+                                                control={<Radio/>} label={property.name}
+                                            />
+                                        )
+                                    })}
+
+                                </RadioGroup>
+                            </FormControl>
+                        </div>
+                    )}
+                    <FoodOptions handleChangePrice={newPrice => setPrice(newPrice)} food={food} selectedProperty={selectPropertyRef}/>
+                    <br/>
+                    <Divider variant="middle" />
+
+                    <div className={styles.buttonContainer}>
+                        <AddToCartButton price={price} onAdd={handleAddToCart}/>
+                    </div>
+
                 </Box>
             </Modal>
-        </>
+        </FoodCardContext.Provider>
 
     )
 }

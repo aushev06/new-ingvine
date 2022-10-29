@@ -130,6 +130,8 @@ import VideoWhiteIcon from '../../assets/icons/video-white.svg';
 import VideoYellowIcon from '../../assets/icons/video-yellow.svg';
 import VideoYellowMiniIcon from '../../assets/icons/video-yellow-mini.svg';
 import Plus from '../../assets/icons/plus.svg';
+import Increment from '../../assets/icons/increment.svg';
+import Decrement from '../../assets/icons/decrement.svg';
 import React from 'react';
 
 const icons = {
@@ -185,6 +187,8 @@ const icons = {
   'big-video': BigVideoIcon,
   pinterest: PinterestIcon,
   plus: Plus,
+  increment: Increment,
+  decrement: Decrement,
   'pin-stroke': PinStrokeIcon,
   'recorded-masterclass': RecordedMasterClassIcon,
   'pin-green': PinGreenIcon,
