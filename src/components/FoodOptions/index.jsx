@@ -1,12 +1,12 @@
 import {useContext, useState} from "react";
 import styles from "../FoodCard/FoodCard.module.scss";
-import {Checkbox, FormControl, FormControlLabel, FormGroup, FormLabel, Radio} from "@mui/material";
-import {IncrementOrDecrementButton} from "../IncrementOrDecrementButton";
+import {Checkbox, FormControl, FormControlLabel, FormGroup, FormLabel, Radio, RadioGroup} from "@mui/material";
 import {Icon} from "../Icon";
 import {FoodCardContext} from "../FoodCard";
+import {IncrementOrDecrementButton} from "../IncrementOrDecrementButton";
 
 export const FoodOptions = ({food, selectedProperty, setCartItem, onSend, handleChangePrice}) => {
-    const { selectedOptions, setSelectedOptions } = useContext(FoodCardContext)
+    const {selectedOptions, setSelectedOptions} = useContext(FoodCardContext)
     const [price, setPrice] = useState(null);
     const [error, setError] = useState(null);
 
@@ -135,7 +135,7 @@ export const FoodOptions = ({food, selectedProperty, setCartItem, onSend, handle
             if (false === check) {
                 // window.M.toast({html: 'Выберите обязательные опции!'})
                 setError('Выберите обязательные опции!');
-                return;
+
             }
         }
 
@@ -160,11 +160,13 @@ export const FoodOptions = ({food, selectedProperty, setCartItem, onSend, handle
                             <FormControl>
                                 <FormLabel className={styles.optionTitle}
                                            id="demo-row-radio-buttons-group-label">{foodOption.categoryName}</FormLabel>
-                                <FormGroup>
+                                <RadioGroup name={'group_' + key}>
                                     {foodOption.items.map((item, key) => {
+
                                         return (
                                             <div key={item.id} className={styles.property}>
                                                 <FormControlLabel
+                                                    value={item.id}
                                                     className={styles.font}
                                                     key={item.id}
                                                     onClick={item.multiplier === 1 && foodOption.required === true ? selectRadioItem.bind(null, item) : selectOption.bind(null, item)}
@@ -174,23 +176,19 @@ export const FoodOptions = ({food, selectedProperty, setCartItem, onSend, handle
                                                 />
                                                 {
                                                     selectedOptions[item.id] && item.multiplier > 1 && (
-                                                        <div className={styles.propertyActions}>
-                                                            <i onClick={() => decrementOption(item.id)}>
-                                                                <Icon type={'decrement'}/>
-                                                            </i>
-                                                            <span>{selectedOptions[item.id].quantity}</span>
-                                                            <i onClick={() => incrementOption(item.id)}>
-                                                                <Icon type={'increment'}/>
-                                                            </i>
 
-                                                        </div>
+                                                        <IncrementOrDecrementButton
+                                                            quantity={selectedOptions[item.id].quantity}
+                                                            onDecrement={() => decrementOption(item.id)}
+                                                            onIncrement={() => incrementOption(item.id)}
+                                                        />
                                                     )
                                                 }
 
                                             </div>
                                         )
                                     })}
-                                </FormGroup>
+                                </RadioGroup>
                             </FormControl>
 
                         </div>

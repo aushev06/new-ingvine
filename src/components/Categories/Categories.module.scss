@@ -1,17 +1,40 @@
 @import "../../styles/media";
 
 .root {
-  width: 1280px;
+  position: sticky;
+  top: 0;
+  width: 118%;
   height: 55px;
   background: var(--color--gray-0);
   margin-top: 41px;
-  border-radius: 15px;
+  margin-left: -12%;
+  display: flex;
+  justify-content: center;
+  z-index: 1000;
 
   @include phone-m {
     width: 100% !important;
     overflow: auto;
+    overflow-y: hidden;
+    height: 70px;
+    border-radius: 0;
+    margin-left: unset !important;
   }
 }
+
+.fixedCategory {
+  //position: sticky;
+  //top: 0;
+  margin-top: 0px;
+  border-radius: 0;
+  left: 0;
+  z-index: 1000;
+  height: 70px;
+  width: 100% !important;
+  display: flex;
+  transition: 5ms;
+}
+
 
 .list {
   display: flex;
@@ -22,6 +45,15 @@
   }
 }
 
+.more {
+  display: flex;
+  align-items: center;
+
+  span {
+    margin-left: 3px;
+  }
+}
+
 .item {
   font-family: 'Nunito' !important;
   font-style: normal !important;
@@ -29,12 +61,19 @@
   font-size: 16px !important;
   line-height: 22px !important;
   width: unset !important;
+  cursor: pointer;
 
   text-align: center !important;
   color: #202020 !important;
 
   @include phone-m {
     font-size: 12px !important;
+  }
+
+  &:hover {
+    box-shadow: (0px 4px 4px rgba(0, 0, 0, 0.05)) !important;
+    background: #00000012;
+    border-radius: 16px;
   }
 
   &.active {

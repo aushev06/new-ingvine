@@ -2,7 +2,8 @@ import {createSlice} from '@reduxjs/toolkit'
 import {cartApi} from "../../service/cart";
 
 const initialState = {
-    data: null
+    data: null,
+    open: false
 }
 
 export const cartSlice = createSlice({
@@ -14,6 +15,9 @@ export const cartSlice = createSlice({
         },
         setCart: (state, action) => {
             state.data = action.payload;
+        },
+        setOpen: (state, action) => {
+            state.open = action.payload;
         }
 
     },
@@ -34,9 +38,9 @@ export const getCartAsync = () => dispatch => {
     })
 }
 
-// Action creators are generated for each case reducer function
-export const {addToCart, setCart} = cartSlice.actions
+export const {addToCart, setCart, setOpen} = cartSlice.actions
 
 export const selectCart = state => state.cart.data;
+export const selectOpenedCart = state => state.cart.open;
 
 export default cartSlice.reducer

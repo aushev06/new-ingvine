@@ -8,12 +8,13 @@
   font-family: 'Nunito' !important;
   font-style: normal !important;;
   font-weight: 700 !important;;
-  font-size: 14px !important;;
+  font-size: 12px !important;;
   line-height: 22px !important;;
+  margin-right: 15px !important;
 
   letter-spacing: 0.02em !important;
   border-radius: 15px !important;
-  width: 163px;
+  width: 108px;
   height: 48px;
 
   @include phone-m {
@@ -22,6 +23,56 @@
     height: 30px;
   }
 }
+
+.property {
+  display: flex;
+  align-items: center;
+}
+
+.propertyPrice {
+  color: #B9B9B9 !important;
+}
+
+.propertyActions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 16px;
+  gap: 10px;
+
+  width: 120px;
+  height: 48px;
+
+  /* Light Gray */
+
+  background: #F5F5F5;
+  border-radius: 12px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+
+  i {
+    cursor: pointer;
+    display: block;
+  }
+
+  span {
+    font-family: 'Nunito' !important;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+  }
+}
+
+.font {
+  font-family: 'Nunito' !important;
+}
+
 
 .incrementOrDecrement {
   background: #FFF !important;

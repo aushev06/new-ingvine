@@ -9,31 +9,54 @@ import {
     Route,
 } from "react-router-dom";
 import {Home} from "./pages/Home";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {getCartAsync, selectCart} from "./features/cart/cartSlice";
+import {AlertContext} from "./hooks/useAlert";
+import {BottomNav} from "./components/BottomNav";
 
 function App() {
     const dispatch = useDispatch();
     const cart = useSelector(selectCart);
 
-    console.log(cart);
+    const [alertInfo, setAlertInfo] = useState({
+        text: '',
+        status: 'info',
+        opened: false,
+    });
+
+    const openAlert = (text, status) => {
+        setAlertInfo({
+            text,
+            status,
+            opened: true,
+        });
+    };
+
+    const closeAlert = () => {
+        setAlertInfo((prev) => ({
+            ...prev,
+            opened: false,
+        }));
+    };
+
 
     useEffect(() => {
         if (!localStorage.getItem('token')) {
             localStorage.setItem('token', (new Date().getTime().toString()))
         }
 
-        // dispatch(getCartAsync());
+        dispatch(getCartAsync());
 
     }, [])
 
     return (
-        <div>
+        <AlertContext.Provider value={{closeAlert, openAlert}}>
             <Routes>
                 <Route exact path={'/'} element={<Home/>}/>
             </Routes>
-        </div>
+            <BottomNav />
+        </AlertContext.Provider>
     );
 }
 

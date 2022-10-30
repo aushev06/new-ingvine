@@ -1,7 +1,6 @@
 import React from 'react';
 
 import {CartItemView} from './View';
-import {removeFromCart} from "../../services/api/cartApi";
 
 export const CartItem = (
     {
@@ -41,14 +40,14 @@ export const CartItem = (
             classes={classes}
             id={id}
             count={count}
-            name={'wef'}
+            name={name}
             image={image}
             price={price}
             onPlus={onPlus}
             onMinus={onMinus}
             onRemove={onRemove}
-            description={options?.[0].name}
-            product={product}
+            description={''}
+            options={options}
         />
     );
 };

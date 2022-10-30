@@ -4,7 +4,7 @@ import {Button} from "../Button";
 import styles from './FoodCard.module.scss'
 import {AddToCartButton} from "../AddToCartButton";
 import {
-    Box, Checkbox, Divider,
+    Box, Checkbox, Divider, Drawer,
     FormControl,
     FormControlLabel, FormGroup,
     FormLabel,
@@ -35,6 +35,12 @@ export const FoodCard = ({food}) => {
         options = [],
 
     } = food;
+
+    const [showDescription, setShowDescription] = useState(false);
+
+    const sliceName = name.slice(0, 40);
+    const sliceDescription = description.slice(0, 97);
+
     const [selectedOptions, setSelectedOptions] = useState([]);
     const isMobile = useMediaQuery('(max-width:768px)');
     const dispatch = useDispatch();
@@ -64,6 +70,65 @@ export const FoodCard = ({food}) => {
 
     };
 
+    const modalContent = () => {
+        return (
+            <>
+                <Typography className={styles.title} id="modal-modal-title" variant="h6" component="h2">
+                    {name}
+                </Typography>
+
+                <div className={styles.container}>
+                    <div>
+                        <div className={styles.foodCard__image}>
+                            <img src={img} alt=""/>
+                        </div>
+                    </div>
+
+                    <div className={styles.modalDescriptionContainer}>
+
+                        <Typography className={styles.modalDescription} id="modal-modal-description" sx={{mt: 2}}>
+                            {description || 'Описание отсутствует'}
+                        </Typography>
+                    </div>
+                </div>
+
+                {properties.length > 1 && (
+                    <div className={styles.optionContainer}>
+                        <FormControl>
+                            <FormLabel className={styles.optionTitle}
+                                       id="demo-row-radio-buttons-group-label">Порция</FormLabel>
+                            <RadioGroup
+                                row
+                                aria-labelledby="demo-row-radio-buttons-group-label"
+                                name="row-radio-buttons-group"
+                            >
+                                {properties.map(property => {
+                                    return (
+                                        <FormControlLabel
+                                            onClick={() => handleSelectFoodPropertyId(property.id)}
+                                            checked={property.id === selectedFoodPropertyId}
+                                            key={property.id} value={property.id}
+                                            control={<Radio/>} label={property.name}
+                                        />
+                                    )
+                                })}
+
+                            </RadioGroup>
+                        </FormControl>
+                    </div>
+                )}
+                <FoodOptions handleChangePrice={newPrice => setPrice(newPrice)} food={food}
+                             selectedProperty={selectPropertyRef}/>
+                <br/>
+                <Divider variant="middle"/>
+
+                <div className={styles.buttonContainer}>
+                    <AddToCartButton price={price} onAdd={handleAddToCart}/>
+                </div>
+            </>
+        )
+    }
+
     const handleAddToCart = () => {
         dispatch(addToCartAsync(selectedFoodPropertyId, selectedOptions));
         alert('Товар добавлен в корзину')
@@ -76,11 +141,12 @@ export const FoodCard = ({food}) => {
                     <img src={img} alt=""/>
                 </div>
 
-                <div className={styles.foodCard__title}>
-                    {name}
+                <div className={styles.foodCard__title} title={name}>
+                    {sliceName} {sliceName.length === 40 ? '...' : ''}
                 </div>
                 <div className={styles.foodCard__description}>
-                    {description || 'Описание отсутсвует'}
+                    {showDescription ? description || 'Описание отсутсвует' : sliceDescription || 'Описание отсутсвует'} {!showDescription && sliceDescription.length === 97 ?
+                    <span className={styles.span} onClick={() => setShowDescription(true)}>...</span> : ''}
                 </div>
                 <div className={styles.foodCard__footer}>
                     <div>
@@ -96,67 +162,26 @@ export const FoodCard = ({food}) => {
                     </div>
                 </div>
             </div>
-            <Modal
-                open={open}
-                onClose={handleClose}
-                aria-labelledby="modal-modal-title"
-                aria-describedby="modal-modal-description"
-            >
-                <Box sx={style}>
-                    <Typography className={styles.title} id="modal-modal-title" variant="h6" component="h2">
-                        {name}
-                    </Typography>
 
-                    <div className={styles.container}>
-                        <div>
-                            <div className={styles.foodCard__image}>
-                                <img src={img} alt=""/>
-                            </div>
-                        </div>
-
-                        <div className={styles.modalDescriptionContainer}>
-
-                            <Typography className={styles.modalDescription} id="modal-modal-description" sx={{mt: 2}}>
-                                {description || 'Описание отсутствует'}
-                            </Typography>
-                        </div>
+            {!isMobile ? (
+                <Modal
+                    open={open}
+                    onClose={handleClose}
+                    aria-labelledby="modal-modal-title"
+                    aria-describedby="modal-modal-description"
+                >
+                    <Box sx={style}>
+                        {modalContent()}
+                    </Box>
+                </Modal>
+            ) : (
+                <Drawer open={open} onClose={handleClose} anchor={'bottom'} classes={{paper: styles.drawerPaper}}>
+                    <div className={styles.drawerContent}>
+                        {modalContent()}
                     </div>
+                </Drawer>
+            )}
 
-                    {properties.length > 1 && (
-                        <div className={styles.optionContainer}>
-                            <FormControl>
-                                <FormLabel className={styles.optionTitle}
-                                           id="demo-row-radio-buttons-group-label">Порция</FormLabel>
-                                <RadioGroup
-                                    row
-                                    aria-labelledby="demo-row-radio-buttons-group-label"
-                                    name="row-radio-buttons-group"
-                                >
-                                    {properties.map(property => {
-                                        return (
-                                            <FormControlLabel
-                                                onClick={() => handleSelectFoodPropertyId(property.id)}
-                                                checked={property.id === selectedFoodPropertyId}
-                                                key={property.id} value={property.id}
-                                                control={<Radio/>} label={property.name}
-                                            />
-                                        )
-                                    })}
-
-                                </RadioGroup>
-                            </FormControl>
-                        </div>
-                    )}
-                    <FoodOptions handleChangePrice={newPrice => setPrice(newPrice)} food={food} selectedProperty={selectPropertyRef}/>
-                    <br/>
-                    <Divider variant="middle" />
-
-                    <div className={styles.buttonContainer}>
-                        <AddToCartButton price={price} onAdd={handleAddToCart}/>
-                    </div>
-
-                </Box>
-            </Modal>
         </FoodCardContext.Provider>
 
     )

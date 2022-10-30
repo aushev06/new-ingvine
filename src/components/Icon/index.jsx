@@ -38,6 +38,8 @@ import BlogIcon from '../../assets/icons/blog-icon.svg';
 import CalendarSimple from '../../assets/icons/calendar-simple.svg';
 import CameraIcon from '../../assets/icons/camera.svg';
 import CartIcon from '../../assets/icons/cart.svg';
+import BottomCartIcon from '../../assets/icons/bottomCart.svg';
+import DownIcon from '../../assets/icons/down.svg';
 import CashIcon from '../../assets/icons/cash.svg';
 import CatsDrawer from '../../assets/icons/cats-drawer.svg';
 import ChatInputSentIcon from '../../assets/icons/chat-input-sent.svg';
@@ -154,6 +156,7 @@ const icons = {
   cash: CashIcon,
   camera: CameraIcon,
   cart: CartIcon,
+  bottomCart: BottomCartIcon,
   chocolate: ChocolateIcon,
   close: CloseIcon,
   'close-icon': IconClose,
@@ -210,6 +213,7 @@ const icons = {
   'star-simple': StarSimpleIcon,
   youtube: YoutubeIcon,
   telegram: TelegramIcon,
+  down: DownIcon,
   'users-simple': UsersSimpleIcon,
   'video-white': VideoWhiteIcon,
   'video-yellow': VideoYellowIcon,

@@ -11,7 +11,9 @@
   @supports (display: grid) {
     flex-wrap: wrap;
     grid-template-columns: repeat(auto-fill, minmax(22rem, var(--card--item--width)));
-    gap: var(--spacing--40);
+    @include phone-m {
+      gap: var(--spacing--40);
+    }
   }
   @include tablets {
     --card--item--width: 20rem;

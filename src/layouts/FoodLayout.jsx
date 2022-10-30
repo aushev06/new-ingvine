@@ -8,7 +8,7 @@ export const FoodLayout = ({categories}) => {
             {
                 categories.map(category => {
                     return (
-                        <div key={category.id}>
+                        <div id={category.slug} key={category.id}>
                             <Typography variant={'h6'}>
                                 {category.name}
                             </Typography>

@@ -15,7 +15,7 @@ export const Header = React.memo(function Header({className, onMenuClick}) {
         return (
             <header className={styles.header}>
                 <div>
-                    <img src="/mini-logo.svg" alt=""/>
+                    <img src="/logo.svg" alt=""/>
                 </div>
 
                 <div>
