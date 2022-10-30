@@ -1,5 +1,10 @@
 import styles from './Categories.module.scss';
-import {List, ListItem, Menu, MenuItem, useMediaQuery} from "@mui/material";
+import List from '@mui/material/List'
+import ListItem from '@mui/material/ListItem'
+import Menu from '@mui/material/Menu'
+import MenuItem from '@mui/material/MenuItem'
+import useMediaQuery from '@mui/material/useMediaQuery'
+
 import clsx from "clsx";
 import PopupState, {bindTrigger, bindMenu} from 'material-ui-popup-state';
 import {useEffect, useRef, useState} from "react";
@@ -18,34 +23,15 @@ export const Categories = ({categories}) => {
     const [lastTimeout, setLastTimeout] = useState(null);
 
     useEffect(() => {
-        if (!activeCategory) {
-            setActiveCategory(categories[0]?.id)
-        }
         const element = document.querySelector(`#category-${activeCategory}`);
-        if (firstCategories.find((item) => item.id === activeCategory) && element) {
+        if (firstCategories.find((item) => item.id === activeCategory) && element && window && window.pageYOffset > 130) {
             element.scrollIntoView(true)
         }
     }, [activeCategory])
 
-    // useEffect(() => {
-    //     window.addEventListener('scroll', (e) => {
-    //         if (window.pageYOffset && window.pageYOffset > 130) {
-    //             setFixedClass(styles.fixedCategory)
-    //         } else {
-    //             if (window.pageYOffset) {
-    //                 // setFixedClass('')
-    //             }
-    //         }
-    //     })
-    // }, []);
     return (
         <div ref={categoryBlockRef}
              className={clsx(styles.root, fixedClass)}>
-
-            {fixedClass && (
-                <img src="/mini-logo.svg" />
-            )}
-
             <List className={styles.list}>
                 {
                     firstCategories?.map((item) => {

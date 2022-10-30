@@ -1,4 +1,3 @@
-import {Button} from "../Button";
 import styles from "../AddToCartButton/AddToCartButton.module.scss";
 import {Icon} from "../Icon";
 

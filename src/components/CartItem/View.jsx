@@ -1,9 +1,11 @@
-import clsx from 'clsx';
 import React from 'react';
 
 import styles from '../CartDrawer/CartDrawer.module.scss';
-import {Avatar, Divider, ListItem, ListItemAvatar, ListItemText, Typography} from "@mui/material";
-import {Link} from "react-router-dom";
+import Divider from '@mui/material/Divider'
+import ListItem from '@mui/material/ListItem'
+import Typography from '@mui/material/Typography'
+
+
 import {IncrementOrDecrementButton} from "../IncrementOrDecrementButton";
 
 

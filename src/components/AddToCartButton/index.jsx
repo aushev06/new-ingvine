@@ -1,4 +1,6 @@
-import {Button, useMediaQuery} from "@mui/material";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import Button from "@mui/material/Button";
+
 import {Icon} from "../Icon";
 import styles from './AddToCartButton.module.scss';
 
@@ -7,7 +9,7 @@ export const AddToCartButton = ({onAdd, price}) => {
 
     return (
         <Button onClick={onAdd} className={styles.root} variant="outlined">
-            {isMobile ? <Icon type={'plus'} /> : `Добавить ${price ? `${price} ₽` : ''}` }
+            {isMobile ? <Icon type={'plus'}/> : `Добавить ${price ? `${price} ₽` : ''}`}
         </Button>
     )
 }

@@ -1,24 +1,27 @@
 import React from 'react';
 import './FoodCard.css'
-import {Button} from "../Button";
 import styles from './FoodCard.module.scss'
 import {AddToCartButton} from "../AddToCartButton";
-import {
-    Box, Checkbox, Divider, Drawer,
-    FormControl,
-    FormControlLabel, FormGroup,
-    FormLabel,
-    Modal,
-    Radio,
-    RadioGroup,
-    Typography,
-    useMediaQuery
-} from "@mui/material";
+
+import Box from '@mui/material/Box'
+import Divider from '@mui/material/Divider'
+import Drawer from '@mui/material/Drawer'
+import FormControl from '@mui/material/FormControl'
+import FormControlLabel from '@mui/material/FormControlLabel'
+import FormLabel from '@mui/material/FormLabel'
+import Modal from '@mui/material/Modal'
+import Radio from '@mui/material/Radio'
+import Typography from '@mui/material/Typography'
+import RadioGroup from '@mui/material/RadioGroup'
+import useMediaQuery from '@mui/material/useMediaQuery'
+
+
 import {useRef, useState} from "react";
 import {useDispatch} from "react-redux";
-import {addToCartAsync} from "../../features/cart/cartSlice";
+import {addToCartAsync, getCartAsync} from "../../features/cart/cartSlice";
 import {FoodOptions} from "../FoodOptions";
-import {Icon} from "../Icon";
+import {useAlert} from "../../hooks/useAlert";
+import {useAddToCartMutation} from "../../redux/api/cart";
 
 export const FoodCardContext = React.createContext({});
 
@@ -35,6 +38,13 @@ export const FoodCard = ({food}) => {
         options = [],
 
     } = food;
+
+
+    const {openAlert} = useAlert()
+
+    const [
+        addToCart,
+    ] = useAddToCartMutation()
 
     const [showDescription, setShowDescription] = useState(false);
 
@@ -130,8 +140,10 @@ export const FoodCard = ({food}) => {
     }
 
     const handleAddToCart = () => {
-        dispatch(addToCartAsync(selectedFoodPropertyId, selectedOptions));
-        alert('Товар добавлен в корзину')
+        // dispatch(addToCartAsync(selectedFoodPropertyId, selectedOptions));
+        addToCart({foodPropertyId: selectedFoodPropertyId, quantity: 1, selectedOptions})
+        dispatch(getCartAsync());
+        openAlert('Товар добавлен в корзину', 'success')
     }
 
     return (

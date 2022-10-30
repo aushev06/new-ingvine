@@ -4,19 +4,14 @@ import {MainLayout} from "../layouts/MainLayout";
 import {getFoods} from "../service/foods";
 import {useEffect, useState} from "react";
 import {FoodLayout} from "../layouts/FoodLayout";
-import {BottomCartButton} from "../components/BottomCartButton";
+import {useGetCategoriesQuery} from "../redux/api/category";
 
 export const Home = () => {
-    const [categories, setCategories] = useState([]);
+    const {data, error, isLoading} = useGetCategoriesQuery()
 
-    useEffect(() => {
-        getFoods().then(response => {
-            setCategories(response.data);
-        })
-    }, [])
     return (
         <MainLayout>
-             <FoodLayout categories={categories} />
+            <FoodLayout categories={data?.data}/>
         </MainLayout>
     )
 }

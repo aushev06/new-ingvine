@@ -1,7 +1,13 @@
 import {useContext, useState} from "react";
 import styles from "../FoodCard/FoodCard.module.scss";
-import {Checkbox, FormControl, FormControlLabel, FormGroup, FormLabel, Radio, RadioGroup} from "@mui/material";
-import {Icon} from "../Icon";
+
+import FormControl from "@mui/material/FormControl";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormLabel from "@mui/material/FormLabel";
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import Checkbox from "@mui/material/Checkbox";
+
 import {FoodCardContext} from "../FoodCard";
 import {IncrementOrDecrementButton} from "../IncrementOrDecrementButton";
 

@@ -2,7 +2,12 @@ import EmptyCartIcon from '../../assets/icons/empty-cart.svg';
 import React from 'react';
 
 import styles from './CartDrawer.module.scss';
-import {Button, Drawer, IconButton, List, Typography} from "@mui/material";
+import Button from "@mui/material/Button";
+import Drawer from "@mui/material/Drawer";
+import IconButton from "@mui/material/IconButton";
+import List from "@mui/material/List";
+import Typography from "@mui/material/Typography";
+
 import {Icon} from "../Icon";
 import {CartItem} from "../CartItem";
 import {cartApi} from "../../service/cart";

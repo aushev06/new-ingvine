@@ -1,4 +1,5 @@
-import {Grid, Typography} from "@mui/material";
+import Grid from "@mui/material/Grid";
+import Typography from '@mui/material/Typography'
 import {FoodCard} from "../components/FoodCard";
 import {CardsList} from "./CardListLayout";
 
@@ -9,7 +10,7 @@ export const FoodLayout = ({categories}) => {
                 categories.map(category => {
                     return (
                         <div id={category.slug} key={category.id}>
-                            <Typography variant={'h6'}>
+                            <Typography variant={'h6'} style={{fontSize: 36}}>
                                 {category.name}
                             </Typography>
                             <CardsList>

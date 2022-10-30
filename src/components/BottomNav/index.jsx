@@ -1,18 +1,15 @@
 import React, {useState} from "react";
-import {
-    BottomNavigation,
-    BottomNavigationAction,
-    Drawer,
-    Paper,
-} from "@mui/material";
+
+import BottomNavigation from '@mui/material/BottomNavigation'
+import BottomNavigationAction from '@mui/material/BottomNavigationAction'
+import Paper from '@mui/material/Paper'
+
 import ExitToAppOutlinedIcon from "@mui/icons-material/ExitToAppOutlined";
-import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 
 import styles from "./BottomNav.module.scss";
-import {Icon} from "../Icon";
 import {useDispatch, useSelector} from "react-redux";
-import {selectCart, selectOpenedCart, setOpen} from "../../features/cart/cartSlice";
+import {selectCart, setOpen} from "../../features/cart/cartSlice";
 import {CartButton} from "../CartButton";
 import {CartDrawer} from "../CartDrawer";
 

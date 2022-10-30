@@ -120,6 +120,11 @@
   width: 400px !important;
   height: 56px !important;
 
+  @include phone-m {
+    width: 343px !important;
+    padding: 0!important;
+  }
+
   /* Accent */
 
   background: #F85656 !important;

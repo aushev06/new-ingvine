@@ -1,10 +1,5 @@
-import logo from './logo.svg';
 import './App.css';
-import {FoodCard} from "./components/FoodCard";
-import {MainLayout} from "./layouts/MainLayout";
-import {Categories} from "./components/Categories";
 import {
-    BrowserRouter,
     Routes,
     Route,
 } from "react-router-dom";
@@ -14,6 +9,9 @@ import {useDispatch, useSelector} from "react-redux";
 import {getCartAsync, selectCart} from "./features/cart/cartSlice";
 import {AlertContext} from "./hooks/useAlert";
 import {BottomNav} from "./components/BottomNav";
+import Snackbar from "@mui/material/Snackbar";
+import Alert from "@mui/material/Alert";
+import Slide from "@mui/material/Slide";
 
 function App() {
     const dispatch = useDispatch();
@@ -52,10 +50,22 @@ function App() {
 
     return (
         <AlertContext.Provider value={{closeAlert, openAlert}}>
+
+            <Snackbar
+                TransitionComponent={Slide}
+                key={Slide.name}
+                anchorOrigin={{vertical: 'top', horizontal: 'right'}}
+                open={alertInfo.opened}
+                autoHideDuration={4500}
+                onClose={closeAlert}
+            >
+                <Alert severity={alertInfo.status}>{alertInfo.text}</Alert>
+            </Snackbar>
+
             <Routes>
                 <Route exact path={'/'} element={<Home/>}/>
             </Routes>
-            <BottomNav />
+            <BottomNav/>
         </AlertContext.Provider>
     );
 }
