@@ -1,0 +1,213 @@
+.title {
+  font-family: 'Nunito' !important;
+  font-style: normal !important;
+  font-weight: 600 !important;
+  font-size: 36px !important;
+  line-height: 130% !important;
+  /* identical to box height, or 47px */
+
+  display: flex;
+  align-items: center;
+  text-align: center;
+  font-feature-settings: 'pnum' on, 'lnum' on;
+
+  /* Black */
+
+  color: #000000 !important;
+
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+
+.container {
+  margin-top: 60px;
+  display: flex;
+}
+
+.form {
+  /* Auto layout */
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 40px;
+
+  width: 600px;
+}
+
+.formTitle {
+  /* H2 - 28 SemiBold */
+
+  font-family: 'Nunito' !important;
+  font-style: normal !important;
+  font-weight: 600 !important;
+  font-size: 28px !important;
+  line-height: 140% !important;
+  /* or 39px */
+
+  display: flex;
+  align-items: center;
+  text-align: center;
+  font-feature-settings: 'pnum' on, 'lnum' on;
+
+  color: #000000;
+}
+
+
+.info {
+  margin-left: 80px;
+  width: 280px;
+
+  & > div {
+    margin-top: 24px;
+  }
+}
+
+.total {
+  font-family: 'Nunito' !important;;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 140%;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  font-family: Nunito !important;
+  margin-top: 12px !important;
+
+  &:first-child {
+    margin-top: 24px;
+  }
+}
+
+.formControl {
+  width: 100% !important;
+}
+
+.promoCode {
+  background: #F5F5F5 !important;
+  border-radius: 12px !important;
+  border: none !important;
+}
+
+.btnContainer {
+  margin-top: 24px !important;
+}
+
+.payContainer {
+  margin-top: 24px !important;
+}
+
+.pay {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 20px;
+  gap: 10px;
+
+  width: 280px;
+  height: 48px;
+
+  /* Accent */
+
+  background: var(--base-color) !important;
+  border-radius: 12px !important;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 3;
+  align-self: stretch;
+  flex-grow: 0;
+
+  font-family: 'Nunito' !important;
+  font-style: normal  !important;
+  font-weight: 600  !important;
+  font-size: 16px  !important;
+  line-height: 140%  !important;
+  /* or 22px */
+
+  font-feature-settings: 'pnum' on, 'lnum' on;
+
+  /* White */
+
+  color: #FFFFFF !important;
+}
+
+.btn {
+  width: 120px !important;
+  height: 40px !important;
+
+  /* Dark Gray */
+
+  background: #B9B9B9 !important;
+  border-radius: 12px !important;
+  /* H4 - 16 SemiBold */
+
+  font-family: 'Nunito' !important;
+  font-style: normal !important;
+  font-weight: 600 !important;
+  font-size: 10px !important;
+  line-height: 140% !important;
+  /* or 22px */
+
+  display: flex;
+  align-items: center;
+  text-align: center;
+  font-feature-settings: 'pnum' on, 'lnum' on;
+
+  /* White */
+
+  color: #FFFFFF !important;
+}
+
+.input {
+  background: #F5F5F5 !important;
+  color: #000 !important;
+  border: none !important;
+  width: 100% !important;
+}
+
+.label {
+  /* BodyMini - 12 Reg */
+
+  font-family: 'Nunito' !important;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 140%;
+  /* identical to box height, or 17px */
+
+  display: flex;
+  align-items: center;
+  font-feature-settings: 'pnum' on, 'lnum' on;
+
+  /* Very Dark Gray */
+
+  color: #6F6F6F;
+}
+
+
+.line {
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  & > div:first-child {
+    width: 100% !important;
+  }
+}
+
+.apartment {
+  width: 150px !important;
+  margin-left: 20px !important;
+}

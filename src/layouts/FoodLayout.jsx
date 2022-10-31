@@ -2,8 +2,25 @@ import Grid from "@mui/material/Grid";
 import Typography from '@mui/material/Typography'
 import {FoodCard} from "../components/FoodCard";
 import {CardsList} from "./CardListLayout";
+import styles from './ChefList.module.scss'
+import {CardSkeleton} from "../components/FoodCard/Skeleton";
 
-export const FoodLayout = ({categories}) => {
+export const FoodLayout = ({categories, isLoading}) => {
+
+    if (isLoading) {
+        return (
+            <div>
+                <CardsList>
+                    {Array.from({length: 8}, (_, item) => (
+                        <div key={item} className={styles.chefsSkeleton}>
+                            <CardSkeleton key={item}/>
+                        </div>
+                    ))}
+                </CardsList>
+            </div>
+        )
+    }
+
     return (
         <div>
             {
@@ -13,6 +30,7 @@ export const FoodLayout = ({categories}) => {
                             <Typography variant={'h6'} style={{fontSize: 36}}>
                                 {category.name}
                             </Typography>
+
                             <CardsList>
                                 {category.foodProperties.map((food) => {
                                     return (

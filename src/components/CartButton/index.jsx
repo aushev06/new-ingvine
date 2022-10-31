@@ -8,7 +8,6 @@ import {selectCart} from "../../features/cart/cartSlice";
 
 export const CartButton = () => {
     const [totalCount] = useState(0)
-    const [totalPrice] = useState(0)
     const [cartOpened, setCartOpened] = useState(false);
     const cart = useSelector(selectCart);
     return (

@@ -20,6 +20,15 @@
   align-items: center;
 }
 
+.list {
+  display: flex;
+  align-items: center;
+
+  &:first-child {
+    margin-left: 5px;
+  }
+}
+
 
 .phone {
   font-family: 'Nunito' !important;

@@ -1,17 +1,13 @@
-import {Categories} from "../components/Categories";
-import {FoodCard} from "../components/FoodCard";
 import {MainLayout} from "../layouts/MainLayout";
-import {getFoods} from "../service/foods";
-import {useEffect, useState} from "react";
 import {FoodLayout} from "../layouts/FoodLayout";
 import {useGetCategoriesQuery} from "../redux/api/category";
 
 export const Home = () => {
-    const {data, error, isLoading} = useGetCategoriesQuery()
+    const {data, isLoading} = useGetCategoriesQuery()
 
     return (
         <MainLayout>
-            <FoodLayout categories={data?.data}/>
+            <FoodLayout isLoading={isLoading} categories={data?.data}/>
         </MainLayout>
     )
 }

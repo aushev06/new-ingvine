@@ -11,6 +11,7 @@ import Typography from "@mui/material/Typography";
 import {Icon} from "../Icon";
 import {CartItem} from "../CartItem";
 import {cartApi} from "../../service/cart";
+import {Link} from "react-router-dom";
 
 export const CartDrawer = ({onClose, items, opened = false, totalPrice, totalCount}) => {
     const handleClickRemove = async (cartProductId) => {
@@ -77,12 +78,12 @@ export const CartDrawer = ({onClose, items, opened = false, totalPrice, totalCou
 
                 {items.length && (
                     <div>
-                        <Button className={styles.button}>
-                        <span className={styles.buttonText}>
-                            Оформить
-                        </span>
+                        <Link to={'/pay'} className={styles.button}>
+                            <span className={styles.buttonText}>
+                                Оформить
+                            </span>
                             <span>{totalPrice} ₽</span>
-                        </Button>
+                        </Link>
                     </div>
                 )}
             </div>

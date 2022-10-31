@@ -5,17 +5,17 @@ import {
 } from "react-router-dom";
 import {Home} from "./pages/Home";
 import {useEffect, useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {getCartAsync, selectCart} from "./features/cart/cartSlice";
+import {useDispatch} from "react-redux";
+import {getCartAsync} from "./features/cart/cartSlice";
 import {AlertContext} from "./hooks/useAlert";
 import {BottomNav} from "./components/BottomNav";
 import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
 import Slide from "@mui/material/Slide";
+import {Pay} from "./pages/Pay";
 
 function App() {
     const dispatch = useDispatch();
-    const cart = useSelector(selectCart);
 
     const [alertInfo, setAlertInfo] = useState({
         text: '',
@@ -64,6 +64,7 @@ function App() {
 
             <Routes>
                 <Route exact path={'/'} element={<Home/>}/>
+                <Route exact path={'/pay'} element={<Pay/>}/>
             </Routes>
             <BottomNav/>
         </AlertContext.Provider>

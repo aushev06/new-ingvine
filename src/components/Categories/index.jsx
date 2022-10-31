@@ -19,8 +19,7 @@ export const Categories = ({categories}) => {
     const length = isMobile ? 7 : 10;
     const lastCategories = categories?.slice(length) || [];
     const [activeCategory, setActiveCategory] = useState(categories[0]?.id)
-    const [fixedClass, setFixedClass] = useState('');
-    const [lastTimeout, setLastTimeout] = useState(null);
+    const [fixedClass] = useState('');
 
     useEffect(() => {
         const element = document.querySelector(`#category-${activeCategory}`);

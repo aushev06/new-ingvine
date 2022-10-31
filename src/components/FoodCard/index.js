@@ -18,7 +18,7 @@ import useMediaQuery from '@mui/material/useMediaQuery'
 
 import {useRef, useState} from "react";
 import {useDispatch} from "react-redux";
-import {addToCartAsync, getCartAsync} from "../../features/cart/cartSlice";
+import {getCartAsync} from "../../features/cart/cartSlice";
 import {FoodOptions} from "../FoodOptions";
 import {useAlert} from "../../hooks/useAlert";
 import {useAddToCartMutation} from "../../redux/api/cart";
@@ -29,12 +29,8 @@ export const FoodCard = ({food}) => {
     const {
         name,
         description,
-        slug,
-        category_id,
         img,
-        category,
         properties = [],
-        foodInfo,
         options = [],
 
     } = food;

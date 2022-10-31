@@ -13,8 +13,8 @@ import {IncrementOrDecrementButton} from "../IncrementOrDecrementButton";
 
 export const FoodOptions = ({food, selectedProperty, setCartItem, onSend, handleChangePrice}) => {
     const {selectedOptions, setSelectedOptions} = useContext(FoodCardContext)
-    const [price, setPrice] = useState(null);
-    const [error, setError] = useState(null);
+    const [setPrice] = useState(null);
+    const [setError] = useState(null);
 
 
     const indexById = (tempItems) => {
