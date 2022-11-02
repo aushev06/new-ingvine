@@ -56,14 +56,6 @@ export const BottomNav = () => {
                     />
                 </BottomNavigation>
             </Paper>
-
-            <CartDrawer
-                totalCount={totalCount}
-                totalPrice={cart?.total}
-                opened={cartOpened}
-                onClose={() => setCartOpened(false)}
-                items={cart?.cartProperties || []}
-            />
         </>
     );
 };

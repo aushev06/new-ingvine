@@ -1,8 +1,11 @@
 import Drawer from "@mui/material/Drawer";
 import styles from './NavigationDrawer.module.scss'
-import {Link} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 import Typography from "@mui/material/Typography";
 import MenuItem from "@mui/material/MenuItem";
+import {SelectCity} from "../SelectCity";
+import {CartButton} from "../CartButton";
+import React from "react";
 
 export const NavigationDrawer = ({menuOpened, onClose}) => {
     return (
@@ -19,14 +22,30 @@ export const NavigationDrawer = ({menuOpened, onClose}) => {
             <nav className={styles.root}>
                 <ul className={styles.mainList}>
                     <MenuItem className={styles.item}>
-                        <Link to={'/'}>
+                        <NavLink to={'/'}>
                             <Typography className={styles.mainItemBoldText} variant="body1">
                                 Главная
                             </Typography>
-                        </Link>
+                        </NavLink>
+                    </MenuItem>
+
+                    <MenuItem className={styles.item}>
+                        <NavLink to={'/delivery'}>
+                            <Typography className={styles.mainItemBoldText} variant="body1">
+                                Доставка
+                            </Typography>
+                        </NavLink>
                     </MenuItem>
                 </ul>
             </nav>
+
+            <div className={styles.btns}>
+                <SelectCity/>
+                <div>
+                    <CartButton/>
+                </div>
+            </div>
+
         </Drawer>
     )
 }

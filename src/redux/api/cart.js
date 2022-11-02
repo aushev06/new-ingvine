@@ -11,7 +11,12 @@ export const cartApi = createApi({
                 return ({url: `?_token=${localStorage.getItem('token')}`, method: 'POST', data: post})
             },
         }),
+        setQuantity: builder.mutation({
+            query: (post) => {
+                return ({url: `/cart-property`, method: 'PUT', data: {quantitiesInfo: post}})
+            },
+        }),
     }),
 })
 
-export const {useAddToCartMutation} = cartApi
+export const {useAddToCartMutation, useSetQuantityMutation} = cartApi

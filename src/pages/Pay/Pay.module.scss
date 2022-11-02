@@ -1,3 +1,5 @@
+@import "../../styles/media";
+
 .title {
   font-family: 'Nunito' !important;
   font-style: normal !important;
@@ -27,6 +29,9 @@
 .container {
   margin-top: 60px;
   display: flex;
+  @include phone-m {
+    flex-direction: column !important;
+  }
 }
 
 .form {
@@ -39,6 +44,26 @@
   gap: 40px;
 
   width: 600px;
+
+  @include phone-m {
+    width: 100% !important;
+  }
+}
+
+.radioTitle {
+  font-family: 'Nunito' !important;
+  font-style: normal !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  line-height: 140% !important;
+  /* or 39px */
+
+  display: flex;
+  align-items: center;
+  text-align: center;
+  font-feature-settings: 'pnum' on, 'lnum' on;
+
+  color: #000000 !important;
 }
 
 .formTitle {
@@ -67,6 +92,12 @@
   & > div {
     margin-top: 24px;
   }
+
+  @include phone-m {
+    margin-left: 0px;
+    width: 100% !important;
+    margin-top: 20px;
+  }
 }
 
 .total {
@@ -92,6 +123,8 @@
   width: 100% !important;
 }
 
+
+
 .promoCode {
   background: #F5F5F5 !important;
   border-radius: 12px !important;
@@ -104,6 +137,10 @@
 
 .payContainer {
   margin-top: 24px !important;
+  @include phone-m {
+    margin-bottom: 50px !important;
+    width: 100% !important;
+  }
 }
 
 .pay {
@@ -141,6 +178,10 @@
   /* White */
 
   color: #FFFFFF !important;
+
+  @include phone-m {
+    width: 100% !important;
+  }
 }
 
 .btn {

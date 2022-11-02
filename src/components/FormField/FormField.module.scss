@@ -1,6 +1,8 @@
 .formField {
   margin-bottom: 20px;
   position: relative;
+  background: #F5F5F5 !important;
+  border-radius: 15px !important;
   b {
     display: block;
     margin-bottom: 5px;
@@ -9,6 +11,8 @@
 
   input,
   textarea {
+    background: #F5F5F5 !important;
+    border-radius: 15px !important;
     width: 100%;
     font-size: 16px;
     resize: none;
@@ -73,19 +77,30 @@ html[lang='ar'] .formPhoneField {
   position: relative;
   display: flex;
   align-items: center;
-  border-radius: 8px;
+  border-radius: 15px;
   border: 1px solid var(--color--gray-200);
-  padding-left: 15px;
+  //padding-left: 12px;
 
   input {
     height: 48px;
   }
+
+  input::placeholder {
+    //padding-left: 15px !important;
+  }
+
+  input[value] {
+    padding-left: 15px !important;
+  }
+
 }
 
 .formFieldError {
   color: red;
   margin-top: 5px;
   white-space: pre-line;
+  font-size: 14px;
+  margin-left: 15px;
 }
 
 .prefix {

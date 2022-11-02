@@ -37,7 +37,7 @@ export const CartItemView = ({
                         {options.map((option => {
                             return (
                                 <div key={option.id} className={styles.optionName}>
-                                    {option.name}
+                                    {option.name} x {option.quantity}
                                 </div>
                             )
                         }))}
@@ -50,9 +50,7 @@ export const CartItemView = ({
                 </div>
 
                 <div>
-                    <IncrementOrDecrementButton quantity={1} onDecrement={() => {
-                    }} onIncrement={() => {
-                    }}/>
+                    <IncrementOrDecrementButton quantity={count} onDecrement={onMinus} onIncrement={onPlus}/>
                 </div>
 
 

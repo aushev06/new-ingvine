@@ -134,6 +134,11 @@ import VideoYellowMiniIcon from '../../assets/icons/video-yellow-mini.svg';
 import Plus from '../../assets/icons/plus.svg';
 import Increment from '../../assets/icons/increment.svg';
 import Decrement from '../../assets/icons/decrement.svg';
+import Phone from '../../assets/icons/phone.svg';
+import Pin from '../../assets/icons/pin.svg';
+import Empty from '../../assets/icons/empty-box.svg';
+import Success from '../../assets/icons/success-bold-xl.svg';
+import Profile from '../../assets/icons/profile.svg';
 import React from 'react';
 
 const icons = {
@@ -173,6 +178,7 @@ const icons = {
   'gift-simple': GiftSimpleIcon,
   'gluten-free': GlutenFreeIcon,
   groceries: GroceriesIcon,
+  phone: Phone,
   heart: HeartIcon,
   info: InfoIcon,
   instagram: InstagramIcon,
@@ -180,6 +186,7 @@ const icons = {
   launch: LaunchIcon,
   logout: LogoutIcon,
   link: LinkIcon,
+  pin: Pin,
   'laptop-simple': LaptopSimpleIcon,
   meat: MeatIcon,
   nut: NutIcon,
@@ -273,6 +280,9 @@ const icons = {
   japan: Japan,
   korea: Korea,
   china: China,
+  empty: Empty,
+  success: Success,
+  profile: Profile,
 }
 
 export const Icon = ({

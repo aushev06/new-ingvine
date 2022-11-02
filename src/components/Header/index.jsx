@@ -1,14 +1,16 @@
 import clsx from 'clsx';
 import React, {useState} from 'react';
 import styles from './Header.module.scss';
-import {Link} from "react-router-dom";
-import {LogoSvg} from "./LogoSvg";
+import {Link, NavLink} from "react-router-dom";
 import {CartButton} from "../CartButton";
 import {LoginButton} from "../LoginButton";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import {NavigationDrawer} from "../NavigationDrawer";
+import {IconButton} from "../IconButton";
+import {SelectCity} from "../SelectCity";
+import {Icon} from "../Icon";
 
 export const Header = React.memo(function Header({className, onMenuClick}) {
     const isMobile = useMediaQuery('(max-width:768px)');
@@ -20,7 +22,7 @@ export const Header = React.memo(function Header({className, onMenuClick}) {
                 <header className={styles.header}>
                     <div>
                         <Link to={'/'}>
-                            <img src="/logo.svg" alt=""/>
+                            <img className={styles.mobileLogo} src="/logo.png" alt=""/>
                         </Link>
                     </div>
 
@@ -30,6 +32,10 @@ export const Header = React.memo(function Header({className, onMenuClick}) {
                 </header>
 
                 <NavigationDrawer menuOpened={opened} onClose={() => setIsOpened(false)}/>
+                <div style={{display: 'none'}}>
+                    <SelectCity/>
+                </div>
+
             </>
         )
     }
@@ -39,47 +45,44 @@ export const Header = React.memo(function Header({className, onMenuClick}) {
             <div className={styles.left}>
                 <Link to={'/'} className={styles.logo}>
                     <i>
-                        <LogoSvg/>
+                        <img src="logo.png" alt=""/>
                     </i>
                 </Link>
-                <div className={styles.location}>
-                    <img src="/images/location.svg" alt=""/>
-                    <span className={styles.locationText}>
-                    Магас
-                </span>
-                </div>
             </div>
             <div className={styles.right}>
                 <List className={styles.list}>
                     <ListItem>
-                        <Link to={'/'}>Гланая</Link>
+                        <NavLink className={window.location.pathname == '/' ? styles.active : ''}
+                                 to={'/'}>Гланая</NavLink>
                     </ListItem>
 
                     <ListItem>
-                        <Link to={'/'}>Оплата</Link>
+                        <NavLink className={window.location.pathname == '/delivery' ? styles.active : ''}
+                                 to={'/delivery'}>Доставка</NavLink>
                     </ListItem>
 
                     <ListItem>
-                        <Link to={'/'}>Акции</Link>
+                        <NavLink to={'/'}>Акции</NavLink>
                     </ListItem>
 
                     <ListItem>
-                        <Link to={'/'}>О нас</Link>
+                        <NavLink to={'/'}>О нас</NavLink>
                     </ListItem>
                 </List>
 
-                <div>
-                    <div className={styles.phone}>+7 (928) 009-88-55</div>
-                    <div className={styles.phoneText}>телефон для связи</div>
-                </div>
-                <div>
-                    <CartButton/>
-                </div>
-                <div>
-                    <LoginButton/>
+                <div className={styles.btns}>
+                    <SelectCity/>
+                    <div>
+                        <CartButton/>
+                    </div>
+
+                    <div>
+                        <LoginButton/>
+                    </div>
                 </div>
 
             </div>
+
         </header>
     );
 });

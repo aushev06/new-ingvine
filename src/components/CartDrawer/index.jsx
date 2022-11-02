@@ -13,7 +13,7 @@ import {CartItem} from "../CartItem";
 import {cartApi} from "../../service/cart";
 import {Link} from "react-router-dom";
 
-export const CartDrawer = ({onClose, items, opened = false, totalPrice, totalCount}) => {
+export const CartDrawer = ({onClose, items, opened = false, totalPrice}) => {
     const handleClickRemove = async (cartProductId) => {
         if (window.confirm('Вы действительно хотите удалить ? ')) {
             await cartApi.destroyProperty(cartProductId);
@@ -50,6 +50,7 @@ export const CartDrawer = ({onClose, items, opened = false, totalPrice, totalCou
                                     price={cartItem.price}
                                     options={cartItem.options}
                                     handleClickRemove={handleClickRemove}
+                                    sum={cartItem.sum}
                                 />
                             );
                         })}
@@ -76,16 +77,16 @@ export const CartDrawer = ({onClose, items, opened = false, totalPrice, totalCou
                 </div>
                 {cartContent}
 
-                {items.length && (
+                {items.length ? (
                     <div>
-                        <Link to={'/pay'} className={styles.button}>
+                        <Link onClick={() => onClose()} to={'pay'} className={styles.button}>
                             <span className={styles.buttonText}>
                                 Оформить
                             </span>
                             <span>{totalPrice} ₽</span>
                         </Link>
                     </div>
-                )}
+                ) : null}
             </div>
         </Drawer>
     );

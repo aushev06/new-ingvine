@@ -1,0 +1,41 @@
+@import "../../styles/media";
+
+.root {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 12px !important;
+  gap: 8px !important;
+  height: 32px !important;
+
+  /* Light Gray */
+
+  background: #F5F5F5 !important;
+  border-radius: 30px !important;
+}
+
+
+.font {
+  font-family: 'Nunito' !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  font-size: 16px !important;
+  line-height: 140% !important;
+  /* or 22px */
+
+  display: flex;
+  align-items: center;
+  font-feature-settings: 'pnum' on, 'lnum' on;
+
+  /* Black */
+
+  color: #000000;
+  @include phone-m {
+    font-size: 12px !important;
+  }
+
+
+  text-transform: none !important;
+
+}

@@ -2,20 +2,20 @@ import Button from "@mui/material/Button";
 import {Icon} from "../Icon";
 import styles from './CartButton.module.scss';
 import {CartDrawer} from "../CartDrawer";
-import {useState} from "react";
+import React, {useState} from "react";
 import {useSelector} from "react-redux";
 import {selectCart} from "../../features/cart/cartSlice";
+import {IconButton} from "../IconButton";
 
 export const CartButton = () => {
+    const isRoot = window.location.pathname;
     const [totalCount] = useState(0)
-    const [cartOpened, setCartOpened] = useState(false);
+    const [cartOpened, setCartOpened] = useState(isRoot && window.location.search.includes('token'));
     const cart = useSelector(selectCart);
+
     return (
         <>
-            <Button onClick={() => setCartOpened(true)} className={styles.root} variant="outlined"
-                    startIcon={<Icon type={'cart'}/>}>
-                {cart?.total || 0} ₽
-            </Button>
+            <IconButton onClick={() => setCartOpened(true)} text={`${cart?.total || 0} ₽`} iconType={'bottomCart'}/>
             <CartDrawer
                 totalCount={totalCount}
                 totalPrice={cart?.total}

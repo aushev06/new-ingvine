@@ -13,6 +13,10 @@ import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
 import Slide from "@mui/material/Slide";
 import {Pay} from "./pages/Pay";
+import {DeliveryInfo} from "./components/DeliveryInfo";
+import {Delivery} from "./pages/Delivery";
+import {MainLayout} from "./layouts/MainLayout";
+import {Result} from "./components/Result";
 
 function App() {
     const dispatch = useDispatch();
@@ -65,6 +69,16 @@ function App() {
             <Routes>
                 <Route exact path={'/'} element={<Home/>}/>
                 <Route exact path={'/pay'} element={<Pay/>}/>
+                <Route exact path={'/delivery'} element={<Delivery/>}/>
+                <Route exact path={'/success'} element={(
+                    <MainLayout disableCategories={true}>
+                       <div style={{height: '70vh'}} className={'w-100 d-flex justify-content-center align-items-center'}>
+                           <Result title={'Заказ принят'} status={'success'} subTitle={'Ожидайте звонка'}
+                                   classes={{root: 'resultRoot'}}/>
+                       </div>
+
+                    </MainLayout>
+                )}/>
             </Routes>
             <BottomNav/>
         </AlertContext.Provider>

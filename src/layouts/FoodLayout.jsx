@@ -26,7 +26,7 @@ export const FoodLayout = ({categories, isLoading}) => {
             {
                 categories.map(category => {
                     return (
-                        <div id={category.slug} key={category.id}>
+                        <div className={styles.items} id={category.slug} key={category.id}>
                             <Typography variant={'h6'} style={{fontSize: 36}}>
                                 {category.name}
                             </Typography>

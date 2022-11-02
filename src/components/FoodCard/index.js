@@ -17,11 +17,12 @@ import useMediaQuery from '@mui/material/useMediaQuery'
 
 
 import {useRef, useState} from "react";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {getCartAsync} from "../../features/cart/cartSlice";
 import {FoodOptions} from "../FoodOptions";
 import {useAlert} from "../../hooks/useAlert";
 import {useAddToCartMutation} from "../../redux/api/cart";
+import {selectSelectedCity, setShowModal} from "../../features/city/citySlice";
 
 export const FoodCardContext = React.createContext({});
 
@@ -37,6 +38,7 @@ export const FoodCard = ({food}) => {
 
 
     const {openAlert} = useAlert()
+    const city = useSelector(selectSelectedCity);
 
     const [
         addToCart,
@@ -53,7 +55,14 @@ export const FoodCard = ({food}) => {
     const [open, setOpen] = useState(false);
     const [selectedFoodPropertyId, setSelectedFoodPropertyId] = useState(properties[0].id);
     const selectPropertyRef = useRef(properties[0]);
-    const handleOpen = () => setOpen(true);
+    const handleOpen = () => {
+        if (!city) {
+            dispatch(setShowModal(true))
+            return
+        }
+
+        setOpen(true);
+    };
     const handleClose = () => setOpen(false);
     const [price, setPrice] = useState(selectPropertyRef.current.price);
 
@@ -135,15 +144,20 @@ export const FoodCard = ({food}) => {
         )
     }
 
-    const handleAddToCart = () => {
+    const handleAddToCart = async () => {
+        if (!city) {
+            dispatch(setShowModal(true))
+            return
+        }
+
         // dispatch(addToCartAsync(selectedFoodPropertyId, selectedOptions));
-        addToCart({foodPropertyId: selectedFoodPropertyId, quantity: 1, selectedOptions})
-        dispatch(getCartAsync());
+        await addToCart({foodPropertyId: selectedFoodPropertyId, quantity: 1, options: selectedOptions})
+        dispatch(await getCartAsync());
         openAlert('Товар добавлен в корзину', 'success')
     }
 
     return (
-        <FoodCardContext.Provider value={{selectedOptions, setSelectedOptions}}>
+        <FoodCardContext.Provider value={{selectedOptions, setSelectedOptions, price, setPrice}}>
             <div className={styles.foodCard}>
                 <div className={styles.foodCard__image}>
                     <img src={img} alt=""/>

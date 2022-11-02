@@ -12,8 +12,7 @@ import {FoodCardContext} from "../FoodCard";
 import {IncrementOrDecrementButton} from "../IncrementOrDecrementButton";
 
 export const FoodOptions = ({food, selectedProperty, setCartItem, onSend, handleChangePrice}) => {
-    const {selectedOptions, setSelectedOptions} = useContext(FoodCardContext)
-    const [setPrice] = useState(null);
+    const {selectedOptions, setSelectedOptions, setPrice} = useContext(FoodCardContext)
     const [setError] = useState(null);
 
 
@@ -165,8 +164,8 @@ export const FoodOptions = ({food, selectedProperty, setCartItem, onSend, handle
                         <div key={key} className={styles.optionContainer}>
                             <FormControl>
                                 <FormLabel className={styles.optionTitle}
-                                           id="demo-row-radio-buttons-group-label">{foodOption.categoryName}</FormLabel>
-                                <RadioGroup name={'group_' + key}>
+                                           id={"group_-" + key}>{foodOption.categoryName}</FormLabel>
+                                <RadioGroup name={'group_' + key} aria-labelledby={"group_" + key}>
                                     {foodOption.items.map((item, key) => {
 
                                         return (
@@ -175,7 +174,14 @@ export const FoodOptions = ({food, selectedProperty, setCartItem, onSend, handle
                                                     value={item.id}
                                                     className={styles.font}
                                                     key={item.id}
-                                                    onClick={item.multiplier === 1 && foodOption.required === true ? selectRadioItem.bind(null, item) : selectOption.bind(null, item)}
+                                                    onChange={item.multiplier === 1 && foodOption.required === true ? () => {
+                                                    } : selectOption.bind(null, item)}
+                                                    onClick={
+                                                        item.multiplier === 1 && foodOption.required === true
+                                                            ? selectRadioItem.bind(null, item)
+                                                            : () => {
+                                                            }
+                                                    }
                                                     control={item.multiplier === 1 && foodOption.required === true ?
                                                         <Radio/> : <Checkbox/>} label={<span>{item.name} <span
                                                     className={styles.propertyPrice}>+{item.price}Р</span></span>}

@@ -1,6 +1,9 @@
 import React from 'react';
 
 import {CartItemView} from './View';
+import {useSetQuantityMutation} from "../../redux/api/cart";
+import {useDispatch} from "react-redux";
+import {getCartAsync} from "../../features/cart/cartSlice";
 
 export const CartItem = (
     {
@@ -12,25 +15,24 @@ export const CartItem = (
         product,
         options = [],
         type,
-        handleClickRemove
+        handleClickRemove,
+        quantity,
+        sum
     }
 ) => {
-    // const { onPlus, onMinus, onRemove, count } = useCartItem({
-    //   item: {
-    //     id: Number(id),
-    //     image,
-    //     name,
-    //     price,
-    //     product,
-    //     options,
-    //     type,
-    //   },
-    // });
+    const dispatch = useDispatch();
+    const [
+        setQuantity,
+    ] = useSetQuantityMutation()
 
-    const count = 0;
-    const onMinus = () => {
+    const onMinus = async () => {
+        await setQuantity([{id, quantity: quantity - 1}])
+        dispatch(await getCartAsync())
+
     };
-    const onPlus = () => {
+    const onPlus = async () => {
+        await setQuantity([{id, quantity: quantity + 1}])
+        dispatch(await getCartAsync())
     };
 
     const onRemove = () => handleClickRemove(id);
@@ -39,10 +41,10 @@ export const CartItem = (
         <CartItemView
             classes={classes}
             id={id}
-            count={count}
+            count={quantity}
             name={name}
             image={image}
-            price={price}
+            price={sum}
             onPlus={onPlus}
             onMinus={onMinus}
             onRemove={onRemove}

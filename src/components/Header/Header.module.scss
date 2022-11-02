@@ -3,6 +3,26 @@
   -webkit-box-pack: justify;
   justify-content: space-between;
   margin-top: 20px;
+
+  border-bottom: 1px solid #E3E3E3 !important;
+}
+
+.mobileLogo {
+  width: 52px;
+  height: 52px;
+  margin-left: 5px;
+}
+
+.btns {
+  display: flex;
+
+  & > div:nth-child(2) {
+    margin-left: 24px !important;
+  }
+
+  & > div:last-child {
+    margin-left: 24px;
+  }
 }
 
 .left {
@@ -26,6 +46,10 @@
 
   &:first-child {
     margin-left: 5px;
+  }
+
+  & .active {
+    text-decoration: underline !important;
   }
 }
 
@@ -73,6 +97,11 @@
     line-height: 0;
     font-style: normal;
     width: 100%;
+
+    img {
+      width: 52px;
+      height: 52px;
+    }
   }
 }
 
